@@ -36,3 +36,34 @@
     transform: rotate(360deg);
   }
 }
+
+/************************************************************/
+body {
+  width: 40%;
+  margin: 0px auto;
+}
+.navBar {
+ display: flex;
+  justify-content: space-evenly;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.emailInput {
+  margin: 50px 0px 20px 0px;
+}
+.passwordInput {
+  margin-bottom: 20px;
+}
+.button {
+  width: 20%;
+  height: 30px;
+  border-radius: 5px;
+  color: white;
+  background-color: darkblue;
+  font-size: 1.0rem;
+  margin: 0px auto;
+}

@@ -6,11 +6,12 @@ import Signin from "./components/Signin";
 function App() {
   return (
     <div className="App">
-      <nav>
+      <nav className="navBar">
         <Link to="/">Home</Link>
+        <Link to="/signin">Sign In</Link>
       </nav>
 
-      <Route exact path="signin/" component={Signin} />
+      <Route exact path="/signin" component={Signin} />
     </div>
   );
 }
