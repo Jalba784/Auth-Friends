@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import FriendList from "./FriendList";
 
 const TestingPrivate = () => {
     const [state, setState] = useState({
@@ -8,7 +9,7 @@ const TestingPrivate = () => {
 
     useEffect(() => {
         getData()
-    });
+    },[]);
 
     const getData = () => {
         const token = localStorage.getItem('token');
@@ -19,7 +20,10 @@ const TestingPrivate = () => {
             }
         })
             .then(res => {
-                console.log(res)
+                console.log(res);
+                setState({
+                    friends: res.data
+                })
             })
             .catch(err => {
                 console.log('Error for getting tokened api => ', err)
@@ -29,6 +33,7 @@ const TestingPrivate = () => {
     return (
         <div>
             <h2>This is my newest protected page!!</h2>
+            <FriendList friendData={state.friends}/>
         </div>
     );
 };
