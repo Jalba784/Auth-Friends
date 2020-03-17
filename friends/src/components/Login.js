@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
-// import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 const Login = props => {
-  // const [error, setError] = useState();
   const [state, setState] = useState({
     credentials: {
       username: "",
@@ -20,41 +18,55 @@ const Login = props => {
     });
   };
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    axios
-      .post("/login", state.credentials)
-      .then(res => {
-        console.log(res);
-        localStorage.setItem("token", res.data.payload);
-        props.history.push("/protected");
-      })
-      .catch(err => {
-        console.log(err);
-      });
+  // const login = e => {
+  //   e.preventDefault();
+  //   axios
+  //     .post("/api/login", state.credentials)
+  //     .then(res => {
+  //       console.log(res);
+  //       localStorage.setItem("token", res.data.payload);
+  //       props.history.push("/protected");
+  //     })
+  //     .catch(err => {
+  //       console.log(err);
+  //     });
+  // };
+  const login = e => {
+    e.preventDefault()
+    axios.post('/api/login')
+        .then()
+        .catch()
   };
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        {/*{error && <div className="error">{error}</div>}*/}
+      <form onSubmit={login}>
+        <br/>
+        <h2>Login</h2>
+        <br/>
+        <label>
+          Username
+          <input
+            className="emailInput"
+            type="text"
+            name="username"
+            placeholder="Username"
+            value={state.credentials.username}
+            onChange={handleChange}
+          />
+        </label>
 
-        <input
-          className="emailInput"
-          type="text"
-          name="username"
-          placeholder="Username"
-          value={state.credentials.username}
-          onChange={handleChange}
-        />
-        <input
-          className="passwordInput"
-          type="password"
-          name="password"
-          placeholder="Password"
-          value={state.credentials.password}
-          onChange={handleChange}
-        />
+        <label>
+          Password
+          <input
+            className="passwordInput"
+            type="password"
+            name="password"
+            placeholder="Password"
+            value={state.credentials.password}
+            onChange={handleChange}
+          />
+        </label>
 
         <button className="button" type="submit">
           Sign In

@@ -53,10 +53,11 @@ form {
 }
 
 .emailInput {
-  margin: 50px 0px 20px 0px;
+  margin: 50px 0px 20px 20px;
 }
 .passwordInput {
   margin-bottom: 20px;
+  margin-left: 20px;
 }
 .button {
   width: 20%;

@@ -1,29 +1,30 @@
-import React, {useEffect} from 'react';
-import './App.css';
-import { Link, Route } from 'react-router-dom'
+import React from "react";
+import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+
+import "./App.css";
 import Login from "./components/Login";
-import axios from 'axios'
+import TestingPrivate from "./components/TestingPrivate";
+import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
-    useEffect(() => {
-        axios.get('http://localhost:5000')
-            .then(res => {
-                console.log(res)
-            })
-            .catch(err => {
-                console.log('Error is => ', err)
-            })
-    })
-
   return (
-    <div className="App">
-      <nav className="navBar">
-        <Link to="/">Home</Link>
-        <Link to="/login">Log In</Link>
-      </nav>
+    <Router>
+      <div className="App">
+        <nav className="navBar">
+          <Link exact to="/login">Login</Link>
+          <Link to="/protected">Protected Page</Link>
+        </nav>
 
-      <Route exact path="/login" component={Login} />
-    </div>
+
+        <Switch>
+          <PrivateRoute exact path="/protected" component={TestingPrivate} />
+          <Route path="/login" component={Login} />
+          {/*<Route component={Login} />*/}
+          {/*<PrivateRoute path="/protected" component={PrivateRoute} />*/}
+          {/*<Route component={PrivateRoute1}/>*/}
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
