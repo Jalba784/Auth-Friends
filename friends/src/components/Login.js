@@ -33,9 +33,16 @@ const Login = props => {
   // };
   const login = e => {
     e.preventDefault()
-    axios.post('/api/login')
-        .then()
-        .catch()
+    axios.post('http://localhost:5000/api/login', state.credentials)
+        .then(res => {
+          console.log(res)
+          localStorage.setItem('token', res.data.payload)
+          // This would be nice for UX. Auto redirect to the main dash
+          props.history.push('/protected')
+        })
+        .catch(err => {
+          console.log('This is the error => ', err)
+        })
   };
 
   return (
